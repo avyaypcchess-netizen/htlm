@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Text Imprint Demo</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    max-width: 480px;
+    margin: 40px auto;
+    padding: 0 20px;
+    background: #f7f7f8;
+    color: #1a1a1a;
+  }
+  h2 { font-size: 1.2rem; margin-bottom: 4px; }
+  p.desc { color: #666; font-size: 0.9rem; margin-top: 0; }
+  .card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  label { display: block; font-size: 0.85rem; margin-bottom: 6px; color: #444; }
+  input[type="text"] {
+    width: 100%;
+    padding: 8px 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+  }
+  button {
+    background: #d97757;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+  button:hover { opacity: 0.9; }
+  #imprintBlock {
+    margin-top: 12px;
+    padding: 10px;
+    background: #f0f0f0;
+    border-radius: 6px;
+    word-break: break-all;
+  }
+</style>
+</head>
+<body>
+
+<h2>Text Imprint Demo</h2>
+<p class="desc">Stores whatever you type as plain text and displays it directly below.</p>
+
+<div class="card">
+  <label for="topic">Topic</label>
+  <input type="text" id="topic" placeholder="Label this entry...">
+
+  <label for="password">Enter text to store</label>
+  <input type="text" id="password" placeholder="Type something...">
+  <button id="pressBtn">Store text</button>
+
+  <div id="imprintBlock">
+    <strong>Topic:</strong> <span id="imprintTopic">AI Architecture</span><br>
+    <strong>Stored value:</strong> <span id="imprintText">The model performs as expected.</span>
+  </div>
+</div>
+
+<script>
+document.getElementById('pressBtn').addEventListener('click', function() {
+  const password = document.getElementById('password').value;
+  const topic = document.getElementById('topic').value;
+
+  if (!password) return;
+
+  document.getElementById('imprintTopic').textContent = topic || '(none)';
+  document.getElementById('imprintText').textContent = password;
+});
+</script>
+
+</body>
+</html>
